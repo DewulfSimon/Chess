@@ -16,6 +16,13 @@ public class Queen extends Piece {
         this.straightService = straightService;
     }
 
+    @Override
+    public String write() {
+        if(this.isBlack())
+        return "Q";
+        else return "q";
+    }
+
     public DiagonalService getDiagonalService() {
         return diagonalService;
     }

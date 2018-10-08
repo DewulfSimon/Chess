@@ -13,6 +13,10 @@ public class Rook extends Piece {
 
     }
 
+    public String write(){
+        if(this.isBlack()) return "R";
+        else return "r";
+    }
 
     public StraightService getStraightService() {
         return straightService;

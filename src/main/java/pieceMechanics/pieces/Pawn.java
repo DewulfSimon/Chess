@@ -13,6 +13,12 @@ public class Pawn extends Piece {
         this.pawnService = pawnService;
     }
 
+    @Override
+    public String write() {
+        if(this.isBlack()) return "P";
+        else return "p";
+    }
+
     public PawnService getPawnService() {
         return pawnService;
     }

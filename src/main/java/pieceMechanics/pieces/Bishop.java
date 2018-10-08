@@ -15,4 +15,11 @@ public class Bishop extends Piece {
     public DiagonalService getDiagonalService() {
         return diagonalService;
     }
+
+    public String write(){
+        if(this.isBlack()){
+            return "B";
+        }else return "b";
+
+    }
 }

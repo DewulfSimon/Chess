@@ -12,7 +12,15 @@ public class King extends Piece {
         this.kingService = kingService;
     }
 
+    @Override
+    public String write() {
+        if(this.isBlack()) return "K";
+        else return "k";
+    }
+
     public KingService getKingService() {
         return kingService;
     }
+
+
 }

@@ -11,13 +11,15 @@ public abstract class Piece {
         this.color = color;
     }
 
-    private boolean isWhite(){
+    protected boolean isWhite(){
 
         return this.color.equals("White");
 
     }
 
-    private boolean isBlack(){
+   public abstract String write();
+
+    protected boolean isBlack(){
 
         return this.color.equals("Black");
     }
