@@ -1,14 +1,14 @@
 package pieceMechanics.pieces;
 
-import BoardMechanics.Location;
+import boardMechanics.Field;
 import pieceMechanics.MoveServices.KingService;
 import pieceMechanics.Piece;
 
 public class King extends Piece {
     private KingService kingService;
 
-    public King(Location location, String color, KingService kingService) {
-        super(location, color);
+    public King(Field field, String color, KingService kingService) {
+        super(field, color);
         this.kingService = kingService;
     }
 

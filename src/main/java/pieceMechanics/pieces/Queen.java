@@ -1,6 +1,6 @@
 package pieceMechanics.pieces;
 
-import BoardMechanics.Location;
+import boardMechanics.Field;
 import pieceMechanics.MoveServices.DiagonalService;
 import pieceMechanics.MoveServices.StraightService;
 import pieceMechanics.Piece;
@@ -9,9 +9,9 @@ public class Queen extends Piece {
     private DiagonalService diagonalService;
     private StraightService straightService;
 
-    public Queen(Location location, String color, DiagonalService diagonalService, StraightService straightService) {
+    public Queen(Field field, String color, DiagonalService diagonalService, StraightService straightService) {
 
-        super(location, color);
+        super(field, color);
         this.diagonalService = diagonalService;
         this.straightService = straightService;
     }

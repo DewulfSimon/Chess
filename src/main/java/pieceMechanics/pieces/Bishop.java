@@ -1,14 +1,14 @@
 package pieceMechanics.pieces;
 
-import BoardMechanics.Location;
+import boardMechanics.Field;
 import pieceMechanics.MoveServices.DiagonalService;
 import pieceMechanics.Piece;
 
 public class Bishop extends Piece {
     private DiagonalService diagonalService;
 
-    public Bishop(Location location, String color, DiagonalService diagonalService) {
-        super(location, color);
+    public Bishop(Field field, String color, DiagonalService diagonalService) {
+        super(field, color);
         this.diagonalService = diagonalService;
     }
 

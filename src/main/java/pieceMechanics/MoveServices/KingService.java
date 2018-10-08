@@ -8,4 +8,5 @@ public class KingService extends MoveServices{
     public KingService(King king) {
         this.king = king;
     }
+
 }

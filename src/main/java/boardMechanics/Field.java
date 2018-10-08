@@ -1,13 +1,13 @@
-package BoardMechanics;
+package boardMechanics;
 
 import gameMechanics.Game;
 import pieceMechanics.Piece;
 
-public class Location {
+public class Field {
     private int x;
     private int y;
 
-    public Location(int x, int y) {
+    public Field(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -15,13 +15,13 @@ public class Location {
     public boolean isLocationTaken(Game game){
 
         for (Piece piece : game.getPieces()) {
-            if(this.compareLocation(piece.getLocation())) return true;
+            if(this.compareLocation(piece.getField())) return true;
         }
 
         return false;
     }
 
-    private boolean compareLocation(Location a){
+    private boolean compareLocation(Field a){
 
         return this.x == a.x && this.y == a.y;
     }
@@ -36,7 +36,7 @@ public class Location {
         return x;
     }
 
-    public Location setX(int x) {
+    public Field setX(int x) {
         this.x = x;
         return this;
     }
@@ -45,7 +45,7 @@ public class Location {
         return y;
     }
 
-    public Location setY(int y) {
+    public Field setY(int y) {
         this.y = y;
         return this;
     }

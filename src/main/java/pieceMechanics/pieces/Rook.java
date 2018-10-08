@@ -1,14 +1,14 @@
 package pieceMechanics.pieces;
 
-import BoardMechanics.Location;
+import boardMechanics.Field;
 import pieceMechanics.MoveServices.StraightService;
 import pieceMechanics.Piece;
 
 public class Rook extends Piece {
     private StraightService straightService;
 
-    public Rook(Location location, String color, StraightService straightService) {
-        super(location, color);
+    public Rook(Field field, String color, StraightService straightService) {
+        super(field, color);
         this.straightService = straightService;
 
     }

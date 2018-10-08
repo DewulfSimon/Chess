@@ -1,14 +1,14 @@
 package pieceMechanics.pieces;
 
-import BoardMechanics.Location;
+import boardMechanics.Field;
 import pieceMechanics.MoveServices.KnightService;
 import pieceMechanics.Piece;
 
 public class Knight extends Piece {
     private KnightService knightService;
 
-    public Knight(Location location, String color, KnightService knightService) {
-        super(location, color);
+    public Knight(Field field, String color, KnightService knightService) {
+        super(field, color);
         this.knightService = knightService;
     }
 

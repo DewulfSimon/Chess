@@ -1,6 +1,6 @@
 package pieceMechanics.MoveServices;
 
-import pieceMechanics.Piece;
+import boardMechanics.Field;
 import pieceMechanics.pieces.Knight;
 
 
@@ -17,5 +17,9 @@ public class KnightService extends MoveServices{
     public KnightService setPiece(Knight knight) {
         this.knight = knight;
         return this;
+    }
+
+    public void move(Field target){
+
     }
 }

@@ -1,13 +1,13 @@
 package pieceMechanics;
 
-import BoardMechanics.Location;
+import boardMechanics.Field;
 
 public abstract class Piece {
-    private Location location;
+    private Field field;
     private String color;
 
-    public Piece(Location location, String color) {
-        this.location = location;
+    public Piece(Field field, String color) {
+        this.field = field;
         this.color = color;
     }
 
@@ -31,12 +31,12 @@ public abstract class Piece {
                 || this.isWhite() && a.isWhite();
     }
 
-    public Location getLocation() {
-        return location;
+    public Field getField() {
+        return field;
     }
 
-    public Piece setLocation(Location location) {
-        this.location = location;
+    public Piece setField(Field field) {
+        this.field = field;
         return this;
     }
 
