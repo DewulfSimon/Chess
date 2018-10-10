@@ -2,32 +2,34 @@ package pieceMechanics.pieces;
 
 import boardMechanics.Field;
 import pieceMechanics.MoveServices.DiagonalService;
-import pieceMechanics.MoveServices.StraightService;
+import pieceMechanics.MoveServices.TranslationalService;
 import pieceMechanics.Piece;
 
-public class Queen extends Piece {
-    private DiagonalService diagonalService;
-    private StraightService straightService;
 
-    public Queen(Field field, String color, DiagonalService diagonalService, StraightService straightService) {
+public class Queen extends Piece {
+
+    private DiagonalService diagonalService;
+    private TranslationalService translationalService;
+
+    public Queen(Field field, String color, DiagonalService diagonalService, TranslationalService translationalService) {
 
         super(field, color);
         this.diagonalService = diagonalService;
-        this.straightService = straightService;
+        this.translationalService = translationalService;
     }
 
-    @Override
-    public String write() {
-        if(this.isBlack())
-        return "Q";
-        else return "q";
-    }
+
 
     public DiagonalService getDiagonalService() {
         return diagonalService;
     }
 
-    public StraightService getStraightService() {
-        return straightService;
+    public TranslationalService getTranslationalService() {
+        return translationalService;
+    }
+
+    @Override
+    public void move(Field targetField) {
+
     }
 }

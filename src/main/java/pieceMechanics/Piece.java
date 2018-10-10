@@ -2,24 +2,29 @@ package pieceMechanics;
 
 import boardMechanics.Field;
 
+
 public abstract class Piece {
     private Field field;
     private String color;
+    private boolean isSelected = false;
+    private boolean isAlive = true;
 
     public Piece(Field field, String color) {
         this.field = field;
         this.color = color;
     }
 
-    protected boolean isWhite(){
+    public abstract void move(Field targetField);
+
+    private boolean isWhite(){
 
         return this.color.equals("White");
 
     }
 
-   public abstract String write();
 
-    protected boolean isBlack(){
+
+    private boolean isBlack(){
 
         return this.color.equals("Black");
     }
@@ -40,6 +45,23 @@ public abstract class Piece {
         return this;
     }
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public Piece setSelected(boolean selected) {
+        isSelected = selected;
+        return this;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public Piece kill() {
+        isAlive = false;
 
 
+        return this;
+    }
 }

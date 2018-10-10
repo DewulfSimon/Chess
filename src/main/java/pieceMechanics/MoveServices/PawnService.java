@@ -1,12 +1,20 @@
 package pieceMechanics.MoveServices;
 
+import boardMechanics.Field;
 import pieceMechanics.pieces.Pawn;
 
 public class PawnService extends MoveServices {
 
-    private Pawn pawn;
+   static  PawnService pawnService = null;
 
-    public PawnService(Pawn pawn) {
-        this.pawn = pawn;
+   public PawnService pawnService(){
+       if(pawnService == null) pawnService = new PawnService();
+       return pawnService;
+   }
+
+
+    @Override
+    boolean move(Field start, Field target) {
+        return false;
     }
 }

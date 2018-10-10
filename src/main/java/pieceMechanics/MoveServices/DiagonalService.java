@@ -10,43 +10,21 @@ import pieceMechanics.Piece;
 public class DiagonalService extends MoveServices {
     static DiagonalService diagonalService = null;
 
-    private DiagonalService(Piece piece) {
-        super(piece);
-    }
 
-    public static DiagonalService getInstance(){
+
+    public static DiagonalService getDiagonalService(){
         if(diagonalService == null)
-        diagonalService = new DiagonalService(null);
+        diagonalService = new DiagonalService();
 
         return  diagonalService;
 
         }
 
-        public void move(Field start, Field target){
-        if(start.getX() > target.getX()){
-            if(start.getY() > target.getY()){
-
-            }
-            else if(start.getY() < target.getY()){
-
-            }
-        }else if (start.getX() < target.getX()){
-            if(start.getY() > target.getY()){
-
-            }
-
-
-            else if(start.getY()< target.getY()){
-
-            }
-        }
-        else System.out.println(" not a valid bishopMove");
-        }
 
 
 
-
-
-
-
+    @Override
+    public boolean move( Field start, Field target) {
+        return false;
+    }
 }

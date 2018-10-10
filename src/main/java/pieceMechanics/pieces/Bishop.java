@@ -7,19 +7,21 @@ import pieceMechanics.Piece;
 public class Bishop extends Piece {
     private DiagonalService diagonalService;
 
-    public Bishop(Field field, String color, DiagonalService diagonalService) {
+    public Bishop(Field field, String color) {
         super(field, color);
-        this.diagonalService = diagonalService;
+        this.diagonalService = DiagonalService.getDiagonalService();
+
     }
 
-    public DiagonalService getDiagonalService() {
-        return diagonalService;
-    }
+    @Override
+    public void move(Field targetField) {
+        if(diagonalService.move(this.getField(), targetField)){
 
-    public String write(){
-        if(this.isBlack()){
-            return "B";
-        }else return "b";
+            this.setField(targetField);
+            this.setSelected(false);
+
+
+        }
 
     }
 }

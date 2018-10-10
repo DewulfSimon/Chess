@@ -8,18 +8,20 @@ import pieceMechanics.pieces.Knight;
  * provides methods for Knight Moves. wasn't really necessary but made it for consistency with other classes
  */
 public class KnightService extends MoveServices{
-    private Knight knight;
 
-    public KnightService(Knight knight) {
-        this.knight = knight;
-    }
+    static KnightService knightService = null;
 
-    public KnightService setPiece(Knight knight) {
-        this.knight = knight;
-        return this;
+    public static KnightService getKnightService(){
+        if(knightService == null) knightService = new KnightService();
+        return knightService;
     }
 
     public void move(Field target){
 
+    }
+
+    @Override
+    boolean move(Field start, Field target) {
+        return false;
     }
 }

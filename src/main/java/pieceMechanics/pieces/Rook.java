@@ -1,24 +1,27 @@
 package pieceMechanics.pieces;
 
 import boardMechanics.Field;
-import pieceMechanics.MoveServices.StraightService;
+import pieceMechanics.MoveServices.TranslationalService;
 import pieceMechanics.Piece;
 
+
 public class Rook extends Piece {
-    private StraightService straightService;
+    private TranslationalService translationalService;
 
-    public Rook(Field field, String color, StraightService straightService) {
+    public Rook(Field field, String color, TranslationalService translationalService) {
         super(field, color);
-        this.straightService = straightService;
+        this.translationalService = translationalService;
 
     }
 
-    public String write(){
-        if(this.isBlack()) return "R";
-        else return "r";
+
+
+    public TranslationalService getTranslationalService() {
+        return translationalService;
     }
 
-    public StraightService getStraightService() {
-        return straightService;
+    @Override
+    public void move(Field targetField) {
+
     }
 }
