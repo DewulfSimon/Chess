@@ -1,6 +1,7 @@
 package pieceMechanics.pieces;
 
 import boardMechanics.Field;
+import gameMechanics.GameData;
 import pieceMechanics.MoveServices.DiagonalService;
 import pieceMechanics.MoveServices.TranslationalService;
 import pieceMechanics.Piece;
@@ -29,7 +30,9 @@ public class Queen extends Piece {
     }
 
     @Override
-    public void move(Field targetField) {
-
+    public boolean selectionCriteria(Field target, GameData gamedata) {
+        if(this.getField().getX() == target.getX() || this.getField().getY() == target.getY())
+            return translationalService.move(this.getField(), target, gamedata.getPiece2DArray());
+        else return diagonalService.move(this.getField(), target, gamedata.getPiece2DArray());
     }
 }

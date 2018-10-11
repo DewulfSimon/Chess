@@ -1,27 +1,22 @@
 package pieceMechanics.pieces;
 
+import GUI.Game;
 import boardMechanics.Field;
+import gameMechanics.GameData;
 import pieceMechanics.MoveServices.DiagonalService;
 import pieceMechanics.Piece;
 
 public class Bishop extends Piece {
     private DiagonalService diagonalService;
 
-    public Bishop(Field field, String color) {
+    public Bishop(Field field, String color, DiagonalService diagonalService) {
         super(field, color);
-        this.diagonalService = DiagonalService.getDiagonalService();
+        this.diagonalService = diagonalService;
 
     }
 
     @Override
-    public void move(Field targetField) {
-        if(diagonalService.move(this.getField(), targetField)){
-
-            this.setField(targetField);
-            this.setSelected(false);
-
-
-        }
-
+    public boolean selectionCriteria(Field target, GameData gameData) {
+        return diagonalService.move(this.getField(), target, gameData.getPiece2DArray());
     }
 }

@@ -1,7 +1,5 @@
 package boardMechanics;
 
-import gameMechanics.GameLogic;
-
 public class Field {
     private int x;
     private int y;
@@ -9,13 +7,6 @@ public class Field {
     public Field(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    public boolean isLocationTaken(GameLogic gameLogic){
-
-        return gameLogic.getPiece2DArray()[this.getY()][this.getX()] != null;
-
-
     }
 
     private boolean compareLocation(Field a){

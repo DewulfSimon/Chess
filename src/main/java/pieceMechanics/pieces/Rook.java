@@ -1,6 +1,7 @@
 package pieceMechanics.pieces;
 
 import boardMechanics.Field;
+import gameMechanics.GameData;
 import pieceMechanics.MoveServices.TranslationalService;
 import pieceMechanics.Piece;
 
@@ -21,7 +22,7 @@ public class Rook extends Piece {
     }
 
     @Override
-    public void move(Field targetField) {
-
+    public boolean selectionCriteria(Field target, GameData gamedata) {
+        return translationalService.move(this.getField(), target, gamedata.getPiece2DArray());
     }
 }

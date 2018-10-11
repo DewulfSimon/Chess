@@ -1,6 +1,7 @@
 package pieceMechanics.MoveServices;
 
 import boardMechanics.Field;
+import pieceMechanics.Piece;
 import pieceMechanics.pieces.Knight;
 
 
@@ -9,19 +10,34 @@ import pieceMechanics.pieces.Knight;
  */
 public class KnightService extends MoveServices{
 
-    static KnightService knightService = null;
+   private static KnightService knightService = null;
 
     public static KnightService getKnightService(){
         if(knightService == null) knightService = new KnightService();
         return knightService;
     }
 
-    public void move(Field target){
 
+    @Override
+    public boolean move(Field start, Field target, Piece[][] board) {
+        return targetFieldFormula(start, target) && targetFieldContent(start, target, board);
     }
 
     @Override
-    boolean move(Field start, Field target) {
+    protected boolean targetFieldFormula(Field start, Field target) {
+        /*
+        X+2 Y+1
+        X+2 Y-1
+        X+1 Y+2
+        X+1 Y-2
+        X-1 Y+2
+        X-1 Y-2
+        X-2 Y+1
+        X-2 Y-1
+         */
+
+
+
         return false;
     }
 }

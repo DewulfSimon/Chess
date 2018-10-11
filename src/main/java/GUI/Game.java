@@ -1,13 +1,13 @@
 package GUI;
 
-import gameMechanics.GameLogic;
+import gameMechanics.GameData;
 
 //@ApplicationScoped
 public class Game {
-    GameLogic gameLogic;
+    GameData gameData;
     Grid grid;
     public Game() {
-        this.gameLogic = new GameLogic();
-        this.grid = new Grid(gameLogic);
+        this.gameData = new GameData();
+        this.grid = new Grid(gameData);
     }
 }

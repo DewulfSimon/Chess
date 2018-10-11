@@ -1,6 +1,7 @@
 package pieceMechanics;
 
 import boardMechanics.Field;
+import gameMechanics.GameData;
 
 
 public abstract class Piece {
@@ -8,13 +9,29 @@ public abstract class Piece {
     private String color;
     private boolean isSelected = false;
     private boolean isAlive = true;
+    private Piece piece;
 
     public Piece(Field field, String color) {
         this.field = field;
         this.color = color;
     }
 
-    public abstract void move(Field targetField);
+
+    public void move(Field targetField, GameData gameData){
+
+        if(selectionCriteria(targetField, gameData)){
+
+            gameData.killIfEnemy(targetField);
+
+            Field startfield = this.field;
+            this.setField(targetField);
+
+            gameData.arrangePieceArray(this, startfield);
+
+        }
+        this.setSelected(false);
+
+    }
 
     private boolean isWhite(){
 
@@ -50,8 +67,12 @@ public abstract class Piece {
     }
 
     public Piece setSelected(boolean selected) {
-        isSelected = selected;
+        this.isSelected = selected;
         return this;
+    }
+
+    public String getColor() {
+        return color;
     }
 
     public boolean isAlive() {
@@ -59,9 +80,12 @@ public abstract class Piece {
     }
 
     public Piece kill() {
-        isAlive = false;
-
+        this.isAlive = false;
+        this.field = null;
 
         return this;
     }
+
+
+    public abstract boolean selectionCriteria(Field target, GameData gamedata);
 }

@@ -1,6 +1,7 @@
 package pieceMechanics.MoveServices;
 
 import boardMechanics.Field;
+import pieceMechanics.Piece;
 import pieceMechanics.pieces.King;
 
 public class KingService extends MoveServices {
@@ -19,7 +20,13 @@ public class KingService extends MoveServices {
 
 
     @Override
-   public boolean move(Field start, Field target) {
+   public boolean move(Field start, Field target,  Piece[][] board) {
+        //todo: check how to implement CHECK methods
+        return targetFieldFormula(start, target) && targetFieldContent(start, target, board);
+    }
+
+    @Override
+    protected boolean targetFieldFormula(Field start, Field target) {
         return false;
     }
 }

@@ -1,6 +1,8 @@
 package pieceMechanics.pieces;
 
+
 import boardMechanics.Field;
+import gameMechanics.GameData;
 import pieceMechanics.MoveServices.KnightService;
 import pieceMechanics.Piece;
 
@@ -21,7 +23,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public void move(Field targetField) {
-
+    public boolean selectionCriteria(Field target, GameData gamedata) {
+        return knightService.move(this.getField(), target, gamedata.getPiece2DArray());
     }
 }
