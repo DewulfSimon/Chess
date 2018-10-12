@@ -17,16 +17,8 @@ public class TranslationalService extends LongGroundMoverService {
      */
 
 
-    @Override
 
-/**
- * checks targetfield and road to targetfield seperatly as it doesn't matter who or what stands in between
- */
-    public boolean move(Field start, Field target, Piece[][] board) {
 
-        return emptyRoad(start, target, board) && targetFieldContent(start, target, board) && targetFieldFormula(start, target);
-
-    }
     /**
      * purely delegates to directions down up, left and right
      */
@@ -81,7 +73,7 @@ public class TranslationalService extends LongGroundMoverService {
     }
 
     @Override
-    protected boolean targetFieldFormula(Field start, Field target) {
+    public boolean targetFieldFormula(Field start, Field target) {
         return (start.getX() == target.getX() || start.getY() == target.getY())
                 && !(start.getX() == target.getX() && start.getY() == target.getY());
     }

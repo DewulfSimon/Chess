@@ -1,6 +1,6 @@
 package pieceMechanics.pieces;
 
-import GUI.Game;
+
 import boardMechanics.Field;
 import gameMechanics.GameData;
 import pieceMechanics.MoveServices.DiagonalService;

@@ -12,6 +12,8 @@ public class GameData {
    // private ArrayList<Piece> pieces = new ArrayList<>();
     private Piece[][] piece2DArray;
 
+    private int counter = 0;
+
     private ArrayList<Piece> deadPieces = new ArrayList<>();
 
     public GameData() {
@@ -41,7 +43,7 @@ public class GameData {
         createKnights();
         createBishops();
         createQueens();
-      //todo:  createPawns();
+        createPawns();
 
     }
 
@@ -125,6 +127,21 @@ public class GameData {
         this.piece2DArray[createdPiece.getField().getY()][createdPiece.getField().getX()] = createdPiece;
     }
 
+    public boolean turnofWhite(){
+        return counter%2 ==0;
+    }
 
+    public boolean turnofBlack(){
+        return counter%2 ==1;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public GameData setCounter(int counter) {
+        this.counter = counter;
+        return this;
+    }
 }
 

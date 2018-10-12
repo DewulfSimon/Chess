@@ -22,12 +22,15 @@ abstract class MoveServices {
     protected boolean targetFieldContent(Field start, Field target, Piece[][] board) {
         Piece targetPiece = board[target.getY()][target.getX()];
         if (targetPiece == null) return true;
-        else if (targetPiece.isEnemy(board[target.getY()][target.getX()])) return true;
+        else return (targetPiece.isEnemy(board[target.getY()][target.getX()]));
 
-        return false;
     }
 
-    protected abstract boolean targetFieldFormula(Field start, Field target);
+    /**
+     *
+     * checks if the target Field conforms to the rules of the Piece
+     */
+
 
 
 }

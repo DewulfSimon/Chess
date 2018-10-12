@@ -2,13 +2,12 @@ package pieceMechanics.MoveServices;
 
 import boardMechanics.Field;
 import pieceMechanics.Piece;
-import pieceMechanics.pieces.Knight;
 
 
 /**
  * provides methods for Knight Moves. wasn't really necessary but made it for consistency with other classes
  */
-public class KnightService extends MoveServices{
+public class KnightService extends MoveServices implements PieceFormula {
 
    private static KnightService knightService = null;
 
@@ -24,20 +23,23 @@ public class KnightService extends MoveServices{
     }
 
     @Override
-    protected boolean targetFieldFormula(Field start, Field target) {
-        /*
-        X+2 Y+1
-        X+2 Y-1
-        X+1 Y+2
-        X+1 Y-2
-        X-1 Y+2
-        X-1 Y-2
-        X-2 Y+1
-        X-2 Y-1
-         */
+    public boolean targetFieldFormula(Field start, Field target) {
 
+        switch (target.getX()- start.getX()){
 
-
-        return false;
+            case +1:
+            case -1: switch (target.getY() - start.getY()){
+                case +2:
+                case -2: return true;
+                default: break;
+            }
+            case +2:
+            case -2:switch (target.getY() - start.getY()){
+                case +1:
+                case -1: return true;
+                default: break;
+            }
+            default: return false;
+        }
     }
 }

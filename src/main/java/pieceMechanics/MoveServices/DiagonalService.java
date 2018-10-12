@@ -80,14 +80,11 @@ public class DiagonalService extends LongGroundMoverService {
 
     }
 
-    @Override
-    public boolean move( Field start, Field target,  Piece[][] board) {
 
-        return emptyRoad(start, target, board) && targetFieldContent(start, target, board);
-    }
 
     @Override
-    protected boolean targetFieldFormula(Field start, Field target) {
-        return start.getX() - target.getX() == start.getY() - target.getY();
+    public boolean targetFieldFormula(Field start, Field target) {
+        return (start.getX() - target.getX() == start.getY() - target.getY())
+                || (start.getX() - target.getX() == (start.getY() - target.getY())*-1);
     }
 }

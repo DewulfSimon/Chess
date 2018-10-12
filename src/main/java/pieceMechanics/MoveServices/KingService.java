@@ -2,9 +2,8 @@ package pieceMechanics.MoveServices;
 
 import boardMechanics.Field;
 import pieceMechanics.Piece;
-import pieceMechanics.pieces.King;
 
-public class KingService extends MoveServices {
+public class KingService extends MoveServices implements PieceFormula {
     static KingService kingService = null;
 
 
@@ -26,7 +25,7 @@ public class KingService extends MoveServices {
     }
 
     @Override
-    protected boolean targetFieldFormula(Field start, Field target) {
+    public boolean targetFieldFormula(Field start, Field target) {
         return false;
     }
 }

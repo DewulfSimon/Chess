@@ -19,7 +19,7 @@ public abstract class Piece {
 
     public void move(Field targetField, GameData gameData){
 
-        if(selectionCriteria(targetField, gameData)){
+        if(selectionCriteria(targetField, gameData) && myTurn(gameData)){
 
             gameData.killIfEnemy(targetField);
 
@@ -27,13 +27,18 @@ public abstract class Piece {
             this.setField(targetField);
 
             gameData.arrangePieceArray(this, startfield);
+            gameData.setCounter(gameData.getCounter() +1);
 
         }
         this.setSelected(false);
 
     }
 
-    private boolean isWhite(){
+    private boolean myTurn(GameData gameData) {
+        return ((this.isWhite() && gameData. turnofWhite())|| (this.isBlack() && gameData.turnofBlack()));
+    }
+
+    public boolean isWhite(){
 
         return this.color.equals("White");
 
@@ -41,7 +46,7 @@ public abstract class Piece {
 
 
 
-    private boolean isBlack(){
+    public boolean isBlack(){
 
         return this.color.equals("Black");
     }

@@ -6,7 +6,10 @@ import pieceMechanics.MoveServices.PawnService;
 import pieceMechanics.Piece;
 
 public class Pawn extends Piece {
-    private PawnService pawnService;
+    private PawnService pawnService; //todo: takes care of single moves, double moves and promote
+
+    private PawnService pawnKillingService; //todo: takes care of En passant and slaying Pieces
+    boolean canbeKilledByEnPassent;
 
 
     public Pawn(Field field, String color, PawnService pawnService) {
@@ -22,11 +25,8 @@ public class Pawn extends Piece {
 
     @Override
     public boolean selectionCriteria(Field target, GameData gamedata) {
-        return false;
+        return pawnService.move(this.getField(), target, gamedata.getPiece2DArray());
     }
 
-    @Override
-    public void move(Field target, GameData gameData) {
-this.setSelected(false);
-    }
+
 }
