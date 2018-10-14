@@ -5,7 +5,7 @@ import gameMechanics.GameData;
 import pieceMechanics.Piece;
 import pieceMechanics.pieces.Pawn;
 
-public class PawnService extends MoveServices {
+public class PawnService extends MoveServices implements PawnFormula{
 
    private static  PawnService pawnService = null;
 
@@ -48,7 +48,7 @@ public class PawnService extends MoveServices {
     }
 
 
-    private boolean targetFieldFormula(Field start, Field target, Piece pawn) {
+    public boolean targetFieldFormula(Field start, Field target, Piece pawn) {
         if(start.getX() != target.getX()) return false;
         if(pawn.isWhite()){
             return(start.getY() - target.getY() == 1) || (start.getY() == 6 && target.getY() == 4);

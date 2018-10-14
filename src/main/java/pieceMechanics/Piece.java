@@ -35,7 +35,7 @@ public abstract class Piece {
     }
 
     private boolean myTurn(GameData gameData) {
-        return ((this.isWhite() && gameData. turnofWhite())|| (this.isBlack() && gameData.turnofBlack()));
+        return ((this.isWhite() && gameData.turnOfWhite())|| (this.isBlack() && gameData.turnOfBlack()));
     }
 
     public boolean isWhite(){
@@ -54,8 +54,8 @@ public abstract class Piece {
     public boolean isEnemy(Piece a){
 
 
-        return this.isBlack() && a.isBlack()
-                || this.isWhite() && a.isWhite();
+        return this.isBlack() && a.isWhite()
+                || this.isWhite() && a.isBlack();
     }
 
     public Field getField() {

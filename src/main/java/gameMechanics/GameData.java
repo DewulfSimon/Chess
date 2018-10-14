@@ -50,8 +50,8 @@ public class GameData {
     private void createPawns() {
         for(int i = 0; i<8; i++) {
             for (int j = 1; j <= 6; j += 5) {
-                if (j == 1) arrangePieceArray(new Pawn(new Field(i, j), "Black", PawnService.getPawnService()));
-                else arrangePieceArray(new Pawn(new Field(i, j), "White", PawnService.getPawnService()));
+                if (j == 1) arrangePieceArray(new Pawn(new Field(i, j), "Black"));
+                else arrangePieceArray(new Pawn(new Field(i, j), "White"));
             }
         }
         }
@@ -127,11 +127,11 @@ public class GameData {
         this.piece2DArray[createdPiece.getField().getY()][createdPiece.getField().getX()] = createdPiece;
     }
 
-    public boolean turnofWhite(){
+    public boolean turnOfWhite(){
         return counter%2 ==0;
     }
 
-    public boolean turnofBlack(){
+    public boolean turnOfBlack(){
         return counter%2 ==1;
     }
 

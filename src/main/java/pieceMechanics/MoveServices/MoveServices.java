@@ -22,14 +22,9 @@ abstract class MoveServices {
     protected boolean targetFieldContent(Field start, Field target, Piece[][] board) {
         Piece targetPiece = board[target.getY()][target.getX()];
         if (targetPiece == null) return true;
-        else return (targetPiece.isEnemy(board[target.getY()][target.getX()]));
-
+        else return (targetPiece.isEnemy(board[start.getY()][start.getX()]));
     }
 
-    /**
-     *
-     * checks if the target Field conforms to the rules of the Piece
-     */
 
 
 
