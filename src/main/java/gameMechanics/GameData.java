@@ -143,5 +143,34 @@ public class GameData {
         this.counter = counter;
         return this;
     }
+
+    public boolean kingIsSafe(Piece moveCandidate, Field target) {
+
+        //todo: this doesn't work when a piece would hypotheticly be slain, it'd just dissapear
+
+        Field startfield = moveCandidate.getField();
+        moveCandidate.setField(target);
+        arrangePieceArray(moveCandidate, startfield);
+        boolean canDoMove = true;
+
+        for (Piece[] pieces : piece2DArray) {
+            for (Piece piece : pieces) {
+                if(piece instanceof King && piece.myTurn(this)){
+                    if(piece.getField().isUnderAttack(this)){
+                       canDoMove = false;
+                        System.out.println("your King is in danger, don't do that");
+                    }
+
+                }
+            }
+        }
+        moveCandidate.setField(startfield);
+        arrangePieceArray(moveCandidate, target);
+        return canDoMove;
+
+    }
+
+
+
 }
 

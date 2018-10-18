@@ -19,22 +19,26 @@ public abstract class Piece {
 
     public void move(Field targetField, GameData gameData){
 
-        if(selectionCriteria(targetField, gameData) && myTurn(gameData)){
+        if(selectionCriteria(targetField, gameData) && myTurn(gameData)) {
+            if (gameData.kingIsSafe(this, targetField)) {
 
-            gameData.killIfEnemy(targetField);
+                gameData.killIfEnemy(targetField);
 
-            Field startfield = this.field;
-            this.setField(targetField);
+                Field startfield = this.field;
+                this.setField(targetField);
 
-            gameData.arrangePieceArray(this, startfield);
-            gameData.setCounter(gameData.getCounter() +1);
+                gameData.arrangePieceArray(this, startfield);
+                gameData.setCounter(gameData.getCounter() + 1);
 
+            }
         }
         this.setSelected(false);
 
     }
 
-    private boolean myTurn(GameData gameData) {
+
+
+    public boolean myTurn(GameData gameData) {
         return ((this.isWhite() && gameData.turnOfWhite())|| (this.isBlack() && gameData.turnOfBlack()));
     }
 

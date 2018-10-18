@@ -5,17 +5,12 @@ import boardMechanics.Field;
 import pieceMechanics.Piece;
 
 public class TranslationalService extends LongGroundMoverService {
-    static TranslationalService translationalService = null;
+    private static TranslationalService translationalService = null;
 
     public static TranslationalService getTranslationalService() {
         if (translationalService == null) translationalService = new TranslationalService();
         return translationalService;
     }
-
-    /**
-     * provides Translational movement to Rooks and Queens
-     */
-
 
 
 
@@ -26,11 +21,11 @@ public class TranslationalService extends LongGroundMoverService {
 @Override
     protected boolean emptyRoad(Field start, Field target, Piece[][] board) {
         if (start.getX() == target.getX() && start.getY() != target.getY()) {
-            if (start.getY() > target.getY()) return moveDown(start, target, board);
+            if (target.getY() > start.getY()) return moveDown(start, target, board);
             else return moveUp(start, target, board);
 
         } else if (start.getY() == target.getY() && start.getX() != target.getX()) {
-            if (start.getX() > target.getX()) return MoveRight(start, target, board);
+            if (target.getX() > start.getX()) return MoveRight(start, target, board);
             else return moveLeft(start, target, board);
 
         } else return false;

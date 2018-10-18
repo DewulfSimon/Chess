@@ -24,14 +24,14 @@ public class DiagonalService extends LongGroundMoverService {
     protected boolean emptyRoad(Field start, Field target, Piece[][] board) {
 
 
-        if(start.getX() > target.getX() && start.getY() != target.getY()) {
+        if(target.getX() > start.getX() && start.getY() != target.getY()) {
             //X > X Y > Y
-            if (start.getY() > target.getY()) return moveDownRight(start, target, board);
+            if (target.getY() > start.getY()) return moveDownRight(start, target, board);
             //X > X Y < Y
             else return moveUpRight(start, target, board);
-        }else if(start.getX() < target.getX() && start.getY() != target.getY()){
+        }else if(target.getX() < start.getX() && start.getY() != target.getY()){
             //X < X Y > Y
-            if (start.getY() > target.getY()) return moveDownLeft(start, target, board);
+            if (target.getY() > start.getY()) return moveDownLeft(start, target, board);
                 //X < X Y < Y
             else return moveUpLeft(start, target, board);
         }
@@ -66,7 +66,8 @@ public class DiagonalService extends LongGroundMoverService {
     private boolean moveUpRight(Field start, Field target, Piece[][] board) {
         for(int i = start.getX()+1, j = start.getY()-1; i<target.getX(); i++, j--){
 
-            if(board[j][i] != null) return false;
+            if(board[j][i] != null)
+                return false;
         }
         return true;
     }
@@ -74,7 +75,8 @@ public class DiagonalService extends LongGroundMoverService {
     private boolean moveDownRight(Field start, Field target, Piece[][] board) {
         for(int i = start.getX()+1, j = start.getY()+1; i<target.getX(); i++, j++){
 
-            if(board[j][i] != null) return false;
+            if(board[j][i] != null)
+                return false;
         }
         return true;
 

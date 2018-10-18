@@ -22,7 +22,8 @@ public class Field {
                 try {
 
                     Piece attacker = board[i][j];
-                     if(attacker.selectionCriteria(this, gameData)) return true;
+                     if(attacker.selectionCriteria(this, gameData))
+                         return true;
 
                 } catch (NullPointerException ignore) {}
             }
