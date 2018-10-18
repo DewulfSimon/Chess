@@ -9,9 +9,9 @@ import pieceMechanics.Piece;
 public class Rook extends Piece {
     private TranslationalService translationalService;
 
-    public Rook(Field field, String color, TranslationalService translationalService) {
+    public Rook(Field field, String color) {
         super(field, color);
-        this.translationalService = translationalService;
+        this.translationalService = TranslationalService.getTranslationalService();
 
     }
 

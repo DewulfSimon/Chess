@@ -1,13 +1,13 @@
-package pieceMechanics.MoveServices;
+package pieceMechanics.MoveServices.pawnServices;
 
 import boardMechanics.Field;
-import gameMechanics.GameData;
+import pieceMechanics.MoveServices.ColoredFormula;
+import pieceMechanics.MoveServices.MoveServices;
 import pieceMechanics.Piece;
-import pieceMechanics.pieces.Pawn;
 
-public class PawnService extends MoveServices implements PawnFormula{
+public class PawnService extends MoveServices implements ColoredFormula {
 
-   private static  PawnService pawnService = null;
+   private static PawnService pawnService = null;
 
    public static PawnService getPawnService(){
        if(pawnService == null) pawnService = new PawnService();
@@ -34,10 +34,7 @@ public class PawnService extends MoveServices implements PawnFormula{
             Piece emptyRoad = board[2][start.getX()];
             if (emptyRoad != null)return false;
         }
-
         return targetPiece == null;
-
-
     }
 
     @Override
@@ -55,8 +52,6 @@ public class PawnService extends MoveServices implements PawnFormula{
         }else if(pawn.isBlack()){
             return (start.getY() - target.getY() == -1) || (start.getY() == 1 && target.getY() == 3);
         }
-
-
         return false;
     }
 }

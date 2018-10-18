@@ -10,9 +10,9 @@ public class King extends Piece {
     private Rook kingSideRook;
     private Rook queenSideRook;
 
-    public King(Field field, String color, KingService kingService, Rook kingSideRook, Rook queenSideRook) {
+    public King(Field field, String color, Rook kingSideRook, Rook queenSideRook) {
         super(field, color);
-        this.kingService = kingService;
+        this.kingService = KingService.getKingService();
         this.kingSideRook = kingSideRook;
         this.queenSideRook = queenSideRook;
     }
@@ -26,6 +26,6 @@ public class King extends Piece {
 
     @Override
     public boolean selectionCriteria(Field target, GameData gamedata) {
-        return false;
+        return kingService.move(this.getField(), target, gamedata.getPiece2DArray());
     }
 }

@@ -1,15 +1,16 @@
 package pieceMechanics.MoveServices;
 
 import boardMechanics.Field;
+import gameMechanics.GameData;
 import pieceMechanics.Piece;
 
 
 /**
  * template class for specific moveServices for all Pieces
  */
-abstract class MoveServices {
+public abstract class MoveServices {
 
-    abstract boolean move(Field start, Field target, Piece[][] board);
+    protected abstract boolean move(Field start, Field target, Piece[][] board);
 
     /**
      *  checks if the targetlocation contains a piece and if so if it is an enemy

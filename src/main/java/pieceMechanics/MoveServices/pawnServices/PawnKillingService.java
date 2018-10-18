@@ -1,10 +1,12 @@
-package pieceMechanics.MoveServices;
+package pieceMechanics.MoveServices.pawnServices;
 
 import boardMechanics.Field;
+import pieceMechanics.MoveServices.ColoredFormula;
+import pieceMechanics.MoveServices.MoveServices;
 import pieceMechanics.Piece;
 
-public class PawnKillingService extends MoveServices implements PawnFormula{
-    private static PawnKillingService  pawnKillingService= null;
+public class PawnKillingService extends MoveServices implements ColoredFormula {
+    private static PawnKillingService pawnKillingService= null;
 
     public static PawnKillingService getPawnKillingService(){
         if(pawnKillingService == null) pawnKillingService = new PawnKillingService();

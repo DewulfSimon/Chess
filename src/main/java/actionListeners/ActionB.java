@@ -1,4 +1,5 @@
 package actionListeners;
+
 import boardMechanics.Field;
 import gameMechanics.GameData;
 import pieceMechanics.Piece;
@@ -19,35 +20,22 @@ public class ActionB implements ActionListener {
 
 
     @Override
-
-    /**
-     * If selectpiece returns a piece, executes move, else nullpointerexceptions causes a piece to be selected.
-     */
     public void actionPerformed(ActionEvent e) {
 
-        Piece currentPiece = selectedPiece();
+        Piece currentPiece = findCurrentPiece();
 
-        try {
-            //in case a Piece was already selected => execute move
+        if (currentPiece != null) {
             currentPiece.move(field, gameData);
             System.out.println("trying to move something");
-            //NullPointer will be triggered if no Piece was already selected
-
-            //if the NullPointer doesn't get triggered (meaning a Piece of the right color was selected)
-                // but we have clicked another Piece of the same color
-                // We want that other Piece to be selected
-            selectPiece(gameData);
-
-        } catch (NullPointerException noPieceSelected) {
-           selectPiece(gameData);
-            }
         }
+        selectPiece(gameData);
+    }
 
     private void selectPiece(GameData gameData) {
 
         Piece selectedPiece = this.gameData.getPiece2DArray()[field.getY()][field.getX()];
         if (selectedPiece != null) {
-            if(selectedPiece.isWhite() && gameData.turnOfWhite() || selectedPiece.isBlack() && gameData.turnOfBlack()) {
+            if (selectedPiece.isWhite() && gameData.turnOfWhite() || selectedPiece.isBlack() && gameData.turnOfBlack()) {
 
 
                 //Als deze niet null is zetten we de boolean isSelected op true;
@@ -63,20 +51,19 @@ public class ActionB implements ActionListener {
                 if (selectedPiece instanceof Pawn) piece = "Pawn";
                 System.out.println("selected a " + selectedPiece.getColor() + " " + piece);
             }
+        }
+
     }
 
-}
 
-
-
-
-    private Piece selectedPiece() {
+    private Piece findCurrentPiece() {
 
         for (Piece[] pieces : this.gameData.getPiece2DArray()) {
             for (Piece piece : pieces)
                 try {
                     if (piece.isSelected()) return piece;
-                } catch (NullPointerException ignored) {}
+                } catch (NullPointerException ignored) {
+                }
         }
         return null;
     }

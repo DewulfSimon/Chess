@@ -26,16 +26,13 @@ public class Grid extends JFrame {
         this.pack();
         this.setMinimumSize(new Dimension(500, 500));
 
-        String[] numbers = {"1", "2", "3", "4", "5", "6", "7", "8"};
-        String[] letters = {"H", "G", "F", "E", "D", "C", "B", "A"};
-
         Container pane = getContentPane();
         pane.setLayout(new GridLayout(rows, columns));
 
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                BoardButton button = new BoardButton(new Field(j, i), letters[i] + numbers[j]);
+                BoardButton button = new BoardButton(new Field(j, i));
                 button.setMinimumSize(new Dimension(100, 100));
                 button.addActionListener(new ActionB(button.getField(), this.gameData));
 
@@ -43,9 +40,10 @@ public class Grid extends JFrame {
                         || button.getField().getX() % 2 == 0 && button.getField().getY() % 2 != 0)
                     button.setBackground(Color.BLACK);
                 else button.setBackground(Color.gray);
+
                 //set an Icon for Pieces;
 
-                pane.add( button);
+                pane.add(button);
 
             }
         }

@@ -11,9 +11,9 @@ import pieceMechanics.Piece;
 public class Knight extends Piece {
     private KnightService knightService;
 
-    public Knight(Field field, String color, KnightService knightService) {
+    public Knight(Field field, String color) {
         super(field, color);
-        this.knightService = knightService;
+        this.knightService = KnightService.getKnightService();
     }
 
 

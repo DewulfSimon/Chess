@@ -12,11 +12,11 @@ public class Queen extends Piece {
     private DiagonalService diagonalService;
     private TranslationalService translationalService;
 
-    public Queen(Field field, String color, DiagonalService diagonalService, TranslationalService translationalService) {
+    public Queen(Field field, String color) {
 
         super(field, color);
-        this.diagonalService = diagonalService;
-        this.translationalService = translationalService;
+        this.diagonalService = DiagonalService.getDiagonalService();
+        this.translationalService = TranslationalService.getTranslationalService();
     }
 
 

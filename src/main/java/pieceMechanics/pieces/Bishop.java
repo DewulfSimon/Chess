@@ -9,9 +9,9 @@ import pieceMechanics.Piece;
 public class Bishop extends Piece {
     private DiagonalService diagonalService;
 
-    public Bishop(Field field, String color, DiagonalService diagonalService) {
+    public Bishop(Field field, String color) {
         super(field, color);
-        this.diagonalService = diagonalService;
+        this.diagonalService = DiagonalService.getDiagonalService();
 
     }
 

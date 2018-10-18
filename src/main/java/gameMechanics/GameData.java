@@ -58,19 +58,19 @@ public class GameData {
 
 
     private void createQueens() {
-        Queen whiteQueen = new Queen(new Field(3,7), "White", DiagonalService.getDiagonalService(), TranslationalService.getTranslationalService());
-        Queen blackQueen = new Queen(new Field(3,0), "Black", DiagonalService.getDiagonalService(), TranslationalService.getTranslationalService());
+        Queen whiteQueen = new Queen(new Field(3,7), "White");
+        Queen blackQueen = new Queen(new Field(3,0), "Black");
 
         this.arrangePieceArray(whiteQueen);
         this.arrangePieceArray(blackQueen);
     }
 
     private void createBishops() {
-        Bishop blackQueenSideBishop = new Bishop(new Field(2,0), "Black", DiagonalService.getDiagonalService());
-        Bishop blackKingSideBishop = new Bishop(new Field(5,0), "Black", DiagonalService.getDiagonalService());
+        Bishop blackQueenSideBishop = new Bishop(new Field(2,0), "Black");
+        Bishop blackKingSideBishop = new Bishop(new Field(5,0), "Black");
 
-        Bishop whiteQueenSideBishop = new Bishop(new Field(2,7), "White", DiagonalService.getDiagonalService());
-        Bishop whiteKingSideBishop = new Bishop(new Field(5,7), "White", DiagonalService.getDiagonalService());
+        Bishop whiteQueenSideBishop = new Bishop(new Field(2,7), "White");
+        Bishop whiteKingSideBishop = new Bishop(new Field(5,7), "White");
 
         this.arrangePieceArray(blackKingSideBishop);
         this.arrangePieceArray(blackQueenSideBishop);
@@ -80,11 +80,11 @@ public class GameData {
     }
 
     private void createKnights() {
-        Knight blackQueenSideKnight = new Knight(new Field(1, 0),"Black", KnightService.getKnightService());
-        Knight blackKingSideKnight = new Knight(new Field(6, 0),"Black", KnightService.getKnightService());
+        Knight blackQueenSideKnight = new Knight(new Field(1, 0),"Black");
+        Knight blackKingSideKnight = new Knight(new Field(6, 0),"Black");
 
-        Knight whiteQueenSideKnight = new Knight(new Field(1, 7),"White", KnightService.getKnightService());
-        Knight whiteKingSideKnight = new Knight(new Field(6,7), "White", KnightService.getKnightService());
+        Knight whiteQueenSideKnight = new Knight(new Field(1, 7),"White");
+        Knight whiteKingSideKnight = new Knight(new Field(6,7), "White");
 
         this.arrangePieceArray(blackKingSideKnight);
         this.arrangePieceArray(blackQueenSideKnight);
@@ -93,14 +93,14 @@ public class GameData {
     }
 
     private void createCastlers() {
-        Rook blackQueenSideRook = new Rook(new Field(0,0), "Black", TranslationalService.getTranslationalService());
-        Rook blackKingSideRook = new Rook(new Field(7,0), "Black", TranslationalService.getTranslationalService());
+        Rook blackQueenSideRook = new Rook(new Field(0,0), "Black");
+        Rook blackKingSideRook = new Rook(new Field(7,0), "Black");
 
-        Rook whiteQueenSideRook = new Rook(new Field(0,7), "White", TranslationalService.getTranslationalService());
-        Rook whiteKingSideRook = new Rook(new Field(7,7), "White" ,TranslationalService.getTranslationalService());
+        Rook whiteQueenSideRook = new Rook(new Field(0,7), "White");
+        Rook whiteKingSideRook = new Rook(new Field(7,7), "White" );
 
-        King whiteKing = new King(new Field(4,7), "White", KingService.getKingService(), whiteKingSideRook, whiteQueenSideRook);
-        King blackKing = new King(new Field(4,0), "Black", KingService.getKingService(), blackKingSideRook, blackQueenSideRook);
+        King whiteKing = new King(new Field(4,7), "White",  whiteKingSideRook, whiteQueenSideRook);
+        King blackKing = new King(new Field(4,0), "Black",  blackKingSideRook, blackQueenSideRook);
 
         this.arrangePieceArray(blackKingSideRook);
         this.arrangePieceArray(blackQueenSideRook);

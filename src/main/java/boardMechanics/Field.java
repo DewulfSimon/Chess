@@ -1,5 +1,8 @@
 package boardMechanics;
 
+import gameMechanics.GameData;
+import pieceMechanics.Piece;
+
 public class Field {
     private int x;
     private int y;
@@ -9,32 +12,38 @@ public class Field {
         this.y = y;
     }
 
-    private boolean compareLocation(Field a){
+   public boolean isUnderAttack(GameData gameData){
 
-        return this.x == a.x && this.y == a.y;
-    }
+        Piece[][] board = gameData.getPiece2DArray();
 
-    public boolean isOnBoard(){
 
-        return this.x > 2 && this.x < 9 && this.y > 2 && this.y < 9;
-    }
+        for(int i = 0; i<8; i++) {
+            for (int j = 0; j<8; j++) {
+                try {
+
+                    Piece attacker = board[i][j];
+                     if(attacker.selectionCriteria(this, gameData)) return true;
+
+                } catch (NullPointerException ignore) {}
+            }
+        }
+
+        return false;
+   }
+
 
 
     public int getX() {
         return x;
     }
 
-    public Field setX(int x) {
-        this.x = x;
-        return this;
-    }
+
 
     public int getY() {
         return y;
     }
 
-    public Field setY(int y) {
-        this.y = y;
-        return this;
-    }
+
+
+
 }
