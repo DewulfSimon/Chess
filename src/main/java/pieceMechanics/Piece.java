@@ -95,6 +95,10 @@ public abstract class Piece {
         return this;
     }
 
+    public Piece setAlive(boolean alive) {
+        isAlive = alive;
+        return this;
+    }
 
     public abstract boolean selectionCriteria(Field target, GameData gamedata);
 }

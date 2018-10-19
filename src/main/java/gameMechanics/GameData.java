@@ -1,7 +1,6 @@
 package gameMechanics;
 
 import boardMechanics.Field;
-import pieceMechanics.MoveServices.*;
 import pieceMechanics.Piece;
 import pieceMechanics.pieces.*;
 
@@ -18,6 +17,8 @@ public class GameData {
 
     public GameData() {
         this.piece2DArray = new Piece[8][8];
+        this.deadPieces.add(null);
+        this.deadPieces.add(null);
         startGame();
     }
 
@@ -35,6 +36,13 @@ public class GameData {
             deadPieces.add(victim);
             System.out.println("killed something");
         }
+    }
+
+    private void resurrect(Field rebirth){
+        Piece jesus = deadPieces.get(deadPieces.size()-1);
+        jesus.setField(rebirth);
+        jesus.setAlive(true);
+        arrangePieceArray(jesus);
     }
 
     private void startGame() {
@@ -120,10 +128,9 @@ public class GameData {
 
         this.piece2DArray[startField.getY()][startField.getX()] = null;
         this.piece2DArray[movingPiece.getField().getY()][movingPiece.getField().getX()] = movingPiece;
-
     }
 
-    public void arrangePieceArray(Piece createdPiece){
+    private void arrangePieceArray(Piece createdPiece){
         this.piece2DArray[createdPiece.getField().getY()][createdPiece.getField().getX()] = createdPiece;
     }
 
@@ -146,9 +153,12 @@ public class GameData {
 
     public boolean kingIsSafe(Piece moveCandidate, Field target) {
 
-        //todo: this doesn't work when a piece would hypotheticly be slain, it'd just dissapear
-
         Field startfield = moveCandidate.getField();
+        boolean didAKill = piece2DArray[target.getY()][target.getX()] != null;
+        if(didAKill){
+            killIfEnemy(target);
+
+        }
         moveCandidate.setField(target);
         arrangePieceArray(moveCandidate, startfield);
         boolean canDoMove = true;
@@ -160,17 +170,15 @@ public class GameData {
                        canDoMove = false;
                         System.out.println("your King is in danger, don't do that");
                     }
-
                 }
             }
         }
         moveCandidate.setField(startfield);
         arrangePieceArray(moveCandidate, target);
+        if(didAKill) {
+            resurrect(target);
+        }
         return canDoMove;
-
     }
-
-
-
 }
 
