@@ -59,11 +59,11 @@ public class ActionB implements ActionListener {
     private Piece findCurrentPiece() {
 
         for (Piece[] pieces : this.gameData.getPiece2DArray()) {
-            for (Piece piece : pieces)
-                try {
+            for (Piece piece : pieces) {
+                if (piece != null) {
                     if (piece.isSelected()) return piece;
-                } catch (NullPointerException ignored) {
                 }
+            }
         }
         return null;
     }

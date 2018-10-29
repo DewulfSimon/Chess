@@ -53,7 +53,7 @@ public class TranslationalService extends LongGroundMoverService {
 
     private boolean moveUp(Field start, Field target, Piece[][] board) {
         //X == X startY < target Y
-        for (int i = start.getY() - 1; i > target.getX(); i--) {
+        for (int i = start.getY() - 1; i > target.getY(); i--) {
             if (board[i][start.getX()] != null) return false;
         }
         return true;
@@ -61,7 +61,7 @@ public class TranslationalService extends LongGroundMoverService {
 
     private boolean moveDown(Field start, Field target, Piece[][] board) {
         //X == X start Y > target Y
-        for (int i = start.getY() + 1; i < target.getX(); i++) {
+        for (int i = start.getY() + 1; i < target.getY(); i++) {
             if (board[i][start.getX()] != null) return false;
         }
         return true;

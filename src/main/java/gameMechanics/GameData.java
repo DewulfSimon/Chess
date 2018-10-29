@@ -153,14 +153,14 @@ public class GameData {
 
     public boolean kingIsSafe(Piece moveCandidate, Field target) {
 
-        Field startfield = moveCandidate.getField();
+        Field startField = moveCandidate.getField();
         boolean didAKill = piece2DArray[target.getY()][target.getX()] != null;
         if(didAKill){
             killIfEnemy(target);
 
         }
         moveCandidate.setField(target);
-        arrangePieceArray(moveCandidate, startfield);
+        arrangePieceArray(moveCandidate, startField);
         boolean canDoMove = true;
 
         for (Piece[] pieces : piece2DArray) {
@@ -173,7 +173,7 @@ public class GameData {
                 }
             }
         }
-        moveCandidate.setField(startfield);
+        moveCandidate.setField(startField);
         arrangePieceArray(moveCandidate, target);
         if(didAKill) {
             resurrect(target);

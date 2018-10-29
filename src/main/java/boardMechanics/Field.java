@@ -12,26 +12,24 @@ public class Field {
         this.y = y;
     }
 
-   public boolean isUnderAttack(GameData gameData){
-
+    public boolean isUnderAttack(GameData gameData) {
         Piece[][] board = gameData.getPiece2DArray();
+        Piece attacker;
 
-
-        for(int i = 0; i<8; i++) {
-            for (int j = 0; j<8; j++) {
-                try {
-
-                    Piece attacker = board[i][j];
-                     if(attacker.selectionCriteria(this, gameData))
-                         return true;
-
-                } catch (NullPointerException ignore) {}
+        for (Piece[] pieces : board) {
+            for (Piece piece : pieces) {
+                if (piece != null) {
+                    if (piece.selectionCriteria(this, gameData) && !piece.myTurn(gameData))
+                        return true;
+                }
             }
         }
-
         return false;
-   }
+    }
 
+    public boolean compareField(Field b){
+        return this.getX() == b.getX() && this.getY() == b.getY();
+    }
 
 
     public int getX() {
@@ -39,12 +37,7 @@ public class Field {
     }
 
 
-
     public int getY() {
         return y;
     }
-
-
-
-
 }

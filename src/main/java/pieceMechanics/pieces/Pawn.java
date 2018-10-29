@@ -31,7 +31,7 @@ public class Pawn extends Piece {
                 || pawnKillingService.move(this.getField(), target, gamedata.getPiece2DArray())) {
 
 
-            //in case of double move (already cleared by previous if-statement, marks the moving piece
+            //in case of double move (already cleared by previous if-statement), marks the moving piece
             // with the int of the current turn
             if(this.getField().getY() - target.getY() == -2 || this.getField().getY() - target.getY() == 2){
                 this.savedGameCounter = gamedata.getCounter();
