@@ -35,4 +35,15 @@ public class EnPassantService extends PawnKillingService {
         return false;
 
     }
+
+    @Override
+    public boolean targetFieldFormula(Field start, Field target, Piece pawn) {
+        boolean rightLine = false;
+        if(pawn.isBlack() && target.getY() == 5 || pawn.isWhite() && target.getY() == 2) rightLine = true;
+
+
+
+
+        return super.targetFieldFormula(start, target, pawn) && rightLine;
+    }
 }

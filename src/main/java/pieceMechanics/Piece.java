@@ -24,15 +24,20 @@ public abstract class Piece {
 
                 gameData.killIfEnemy(targetField);
 
-                Field startfield = this.field;
+                Field startField = this.field;
                 this.setField(targetField);
 
-                gameData.arrangePieceArray(this, startfield);
+                gameData.arrangePieceArray(this, startField);
                 gameData.setCounter(gameData.getCounter() + 1);
 
             }
         }
         this.setSelected(false);
+
+        if(gameData.checkMateOrStaleMate()) {
+            System.out.println("GAME OVER");
+
+        }
 
     }
 
@@ -101,4 +106,6 @@ public abstract class Piece {
     }
 
     public abstract boolean selectionCriteria(Field target, GameData gamedata);
+
+    public abstract String getText();
 }

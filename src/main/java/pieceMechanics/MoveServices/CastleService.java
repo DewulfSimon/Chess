@@ -40,10 +40,7 @@ public class CastleService implements ColoredFormula {
         //checking if king/rook have moved before in the game
         if(!havePiecesNotMovedYet(king,start,  target)) return false;
 
-        if(!allNecessaryFieldsAreSafe(start, target, board, king, gameData)) return false;
-
-
-return true;
+        return allNecessaryFieldsAreSafe(start, target, board, king, gameData);
 
     }
 
@@ -51,8 +48,8 @@ return true;
 
         Rook castlingRook;
         Field testField;
-        if(target.getX() < start.getX()){
-            castlingRook = king.getQueenSideRook();
+        if(isQueenSide(start, target)){
+
 
             for(int i = 0; i<= 4; i++){
               testField = new Field(i, start.getY());
@@ -63,8 +60,8 @@ return true;
                   return false;
             }
 
-        }else if(target.getX() > start.getX()){
-            castlingRook = king.getKingSideRook();
+        }else if(isKingSide(start, target)){
+
             for(int i = 4; i<=7; i++){
                 testField = new Field(i ,start.getY());
                 if(testField.isUnderAttack(gameData)) {
@@ -79,12 +76,16 @@ return true;
         return true;
     }
 
+    private boolean isKingSide(Field start, Field target) {
+        return target.getX() > start.getX();
+    }
+
     private boolean havePiecesNotMovedYet(King king, Field start, Field target) {
         if(king.isHasMoved()) return false;
         if(target.getX() < start.getX()) {
-            return !king.getQueenSideRook().isHasMoved();
+            return king.getQueenSideRook().hasNotMoved();
         } else if(target.getX() > start.getX())
-            return !king.getKingSideRook().isHasMoved();
+            return king.getKingSideRook().hasNotMoved();
 
         return true;
     }
@@ -94,6 +95,10 @@ return true;
         if(piece.isBlack()){
             return target.compareField(new Field(2,0) ) || target.compareField(new Field(6,0));
         }else return target.compareField(new Field(2,7)) || target.compareField(new Field(6,7));
+    }
+
+    public boolean isQueenSide(Field start, Field target){
+        return target.getX() < start.getX();
     }
 
 }

@@ -33,8 +33,8 @@ public class Rook extends Piece {
         return this;
     }
 
-    public boolean isHasMoved() {
-        return hasMoved;
+    public boolean hasNotMoved() {
+        return !hasMoved;
     }
 
     private void setHasMoved() {
@@ -49,5 +49,10 @@ public class Rook extends Piece {
 
             this.setHasMoved();
         }
+    }
+
+    @Override
+    public String getText() {
+        return "Rook";
     }
 }

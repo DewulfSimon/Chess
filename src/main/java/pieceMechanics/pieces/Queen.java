@@ -35,4 +35,9 @@ public class Queen extends Piece {
             return translationalService.move(this.getField(), target, gamedata.getPiece2DArray());
         else return diagonalService.move(this.getField(), target, gamedata.getPiece2DArray());
     }
+
+    @Override
+    public String getText() {
+        return "Queen";
+    }
 }

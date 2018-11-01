@@ -22,4 +22,9 @@ public class Knight extends Piece {
     public boolean selectionCriteria(Field target, GameData gamedata) {
         return knightService.move(this.getField(), target, gamedata.getPiece2DArray());
     }
+
+    @Override
+    public String getText() {
+        return "Knight";
+    }
 }

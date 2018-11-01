@@ -8,7 +8,7 @@ import pieceMechanics.Piece;
  */
 
 public class DiagonalService extends LongGroundMoverService {
-    static DiagonalService diagonalService = null;
+   private static DiagonalService diagonalService = null;
 
 
 
@@ -49,7 +49,7 @@ public class DiagonalService extends LongGroundMoverService {
     private boolean moveUpLeft(Field start, Field target, Piece[][] board) {
         //X > X Y > Y
         for(int i = start.getX()-1, j = start.getY()-1; i>target.getX(); i--, j--){
-
+            if(j>target.getY())
             if(board[j][i] != null) return false;
         }
         return true;
@@ -57,7 +57,7 @@ public class DiagonalService extends LongGroundMoverService {
 
     private boolean moveDownLeft(Field start, Field target, Piece[][] board) {
         for(int i = start.getX()-1, j = start.getY()+1; i>target.getX(); i--, j++){
-
+            if(j<target.getY())
             if(board[j][i] != null) return false;
         }
         return true;
@@ -65,7 +65,7 @@ public class DiagonalService extends LongGroundMoverService {
 
     private boolean moveUpRight(Field start, Field target, Piece[][] board) {
         for(int i = start.getX()+1, j = start.getY()-1; i<target.getX(); i++, j--){
-
+            if(j>target.getY())
             if(board[j][i] != null)
                 return false;
         }
@@ -74,14 +74,13 @@ public class DiagonalService extends LongGroundMoverService {
 
     private boolean moveDownRight(Field start, Field target, Piece[][] board) {
         for(int i = start.getX()+1, j = start.getY()+1; i<target.getX(); i++, j++){
-
+            if(j<target.getY())
             if(board[j][i] != null)
                 return false;
         }
         return true;
 
     }
-
 
 
     @Override

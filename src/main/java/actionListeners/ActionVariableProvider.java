@@ -1,5 +1,6 @@
 package actionListeners;
 
+import GUI.Grid;
 import boardMechanics.Field;
 import gameMechanics.GameData;
 
@@ -9,6 +10,7 @@ public class ActionVariableProvider {
     private Field field;
     private GameData gameData;
     private Field startField;
+    private Grid grid;
 
     private static ActionVariableProvider instance = new ActionVariableProvider();
     public static ActionVariableProvider getActionVariableProvider() {
@@ -20,7 +22,7 @@ public class ActionVariableProvider {
 
 
 
-    public Field getStartField() {
+     Field getStartField() {
         return startField;
     }
 
@@ -29,7 +31,7 @@ public class ActionVariableProvider {
         return this;
     }
 
-    public String getColor() {
+     String getColor() {
         return color;
     }
 
@@ -54,5 +56,13 @@ public class ActionVariableProvider {
     public ActionVariableProvider setGameData(GameData gameData) {
         this.gameData = gameData;
         return this;
+    }
+
+    public void setGrid(Grid grid) {
+        this.grid = grid;
+    }
+
+    public Grid getGrid() {
+        return grid;
     }
 }

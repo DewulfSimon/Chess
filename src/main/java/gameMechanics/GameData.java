@@ -1,5 +1,6 @@
 package gameMechanics;
 
+import actionListeners.ActionVariableProvider;
 import boardMechanics.Field;
 import pieceMechanics.Piece;
 import pieceMechanics.pieces.*;
@@ -19,7 +20,7 @@ public class GameData {
         this.piece2DArray = new Piece[8][8];
         this.deadPieces.add(null);
         this.deadPieces.add(null);
-        startGame();
+
     }
 
     public Piece[][] getPiece2DArray() {
@@ -34,7 +35,7 @@ public class GameData {
             victim.kill();
             piece2DArray[target.getY()][target.getX()] = null;
             deadPieces.add(victim);
-            System.out.println("killed something");
+
         }
     }
 
@@ -43,9 +44,10 @@ public class GameData {
         jesus.setField(rebirth);
         jesus.setAlive(true);
         arrangePieceArray(jesus);
+        deadPieces.remove(jesus);
     }
 
-    private void startGame() {
+    public void startGame() {
 
         createCastlers();
         createKnights();
@@ -119,19 +121,18 @@ public class GameData {
         this.arrangePieceArray(blackKing);
     }
 
-    /**
-     * clears the old location on the matrix
-     * puts the Piece on the same indexes of the array as the Field object of said Piece
-     * @param movingPiece
-     */
+
     public void arrangePieceArray(Piece movingPiece, Field startField){
 
         this.piece2DArray[startField.getY()][startField.getX()] = null;
         this.piece2DArray[movingPiece.getField().getY()][movingPiece.getField().getX()] = movingPiece;
+
+        ActionVariableProvider.getActionVariableProvider().getGrid().arrangeButtonText(movingPiece, startField);
     }
 
     private void arrangePieceArray(Piece createdPiece){
         this.piece2DArray[createdPiece.getField().getY()][createdPiece.getField().getX()] = createdPiece;
+        ActionVariableProvider.getActionVariableProvider().getGrid().arrangeButtonText(createdPiece);
     }
 
     public boolean turnOfWhite(){
@@ -168,7 +169,7 @@ public class GameData {
                 if(piece instanceof King && piece.myTurn(this)){
                     if(piece.getField().isUnderAttack(this)){
                        canDoMove = false;
-                        System.out.println("your King is in danger, don't do that");
+
                     }
                 }
             }
@@ -179,6 +180,29 @@ public class GameData {
             resurrect(target);
         }
         return canDoMove;
+    }
+
+    public ArrayList<Piece> getDeadPieces() {
+        return deadPieces;
+    }
+
+    public boolean checkMateOrStaleMate() {
+
+        for (Piece[] pieces : piece2DArray) {
+            for (Piece piece : pieces) {
+                if(piece != null){
+                    for(int i = 0; i<8; i++){
+                        for(int j = 0; j<8; j++){
+
+                            Field tryField = new Field(i, j);
+                           if(piece.selectionCriteria(tryField, this) && kingIsSafe(piece, tryField)&& piece.myTurn(this))
+                               return false;
+                        }
+                    }
+                }
+            }
+        }
+       return true;
     }
 }
 

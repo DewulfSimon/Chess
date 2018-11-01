@@ -30,18 +30,6 @@ public class Pawn extends Piece {
         if (pawnService.move(this.getField(), target, gamedata.getPiece2DArray())
                 || pawnKillingService.move(this.getField(), target, gamedata.getPiece2DArray())) {
 
-
-            //in case of double move (already cleared by previous if-statement), marks the moving piece
-            // with the int of the current turn
-            if(this.getField().getY() - target.getY() == -2 || this.getField().getY() - target.getY() == 2){
-                this.savedGameCounter = gamedata.getCounter();
-            }
-
-
-            if (target.getY() == 0 || target.getY() == 7) {
-                this.promotionService.promote(this, target, gamedata);
-                return false;
-            }
             return true;
         }
         if(enPassantService.move(this.getField(), target, gamedata)){
@@ -54,8 +42,25 @@ public class Pawn extends Piece {
         return false;
     }
 
+    @Override
+    public void move(Field target, GameData gameData) {
+        super.move(target, gameData);
+        if(this.getField().getY() - target.getY() == -2 || this.getField().getY() - target.getY() == 2){
+            this.savedGameCounter = gameData.getCounter();
+        }
+
+
+        if (target.getY() == 0 || target.getY() == 7) {
+            this.promotionService.promote(this, target, gameData);
+        }
+    }
+
     public int getSavedGameCounter() {
         return savedGameCounter;
     }
 
+    @Override
+    public String getText() {
+        return "Pawn";
+    }
 }

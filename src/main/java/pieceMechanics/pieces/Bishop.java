@@ -19,4 +19,9 @@ public class Bishop extends Piece {
     public boolean selectionCriteria(Field target, GameData gameData) {
         return diagonalService.move(this.getField(), target, gameData.getPiece2DArray());
     }
+
+    @Override
+    public String getText() {
+        return "Bishop";
+    }
 }

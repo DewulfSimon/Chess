@@ -32,7 +32,9 @@ public class KnightService extends MoveServices implements PieceFormula {
                 case +2:
                 case -2: return true;
                 default: break;
+
             }
+                return false;
             case +2:
             case -2:switch (target.getY() - start.getY()){
                 case +1:

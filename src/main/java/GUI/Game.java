@@ -1,13 +1,14 @@
 package GUI;
 
+import actionListeners.ActionVariableProvider;
 import gameMechanics.GameData;
 
-//@ApplicationScoped
 public class Game {
-    GameData gameData;
-    Grid grid;
     public Game() {
-        this.gameData = new GameData();
-        this.grid = new Grid(gameData);
+        GameData gameData = new GameData();
+        Grid grid = new Grid(gameData);
+        ActionVariableProvider actionVariableProvider = ActionVariableProvider.getActionVariableProvider();
+        actionVariableProvider.setGrid(grid);
+        gameData.startGame();
     }
 }

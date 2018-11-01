@@ -44,10 +44,31 @@ public class King extends Piece {
 
     }
 
-    private void castle(Field field, Field targetField, GameData gameData) {
-        //todo: make the king move to targetField, arrangePieceArray, make right rook move to right field and arrangePieceArray;
-        //todo: no need for any killing pieces or anything of the like
-        //todo: do not forget to increase the COUNTER
+    private void castle(Field startField, Field targetField, GameData gameData) {
+
+        this.setField(targetField);
+        Rook movingRook;
+        Field movingRookStartField;
+        if(castleService.isQueenSide(startField, targetField)){
+            movingRook = this.getQueenSideRook();
+            movingRookStartField = movingRook.getField();
+            if(this.isBlack()){
+                movingRook.setField(new Field(3,0));
+            }else movingRook.setField(new Field(3,7));
+        }else{
+            movingRook = this.getKingSideRook();
+            movingRookStartField = movingRook.getField();
+            if(this.isBlack()){
+                movingRook.setField(new Field(5,0));
+            }else movingRook.setField(new Field(5,7));
+        }
+        gameData.arrangePieceArray(movingRook, movingRookStartField);
+        gameData.arrangePieceArray(this, startField);
+        gameData.setCounter(gameData.getCounter() + 1);
+
+        this.setSelected(false);
+
+
 
     }
 
@@ -66,5 +87,10 @@ public class King extends Piece {
 
     public Rook getQueenSideRook() {
         return queenSideRook;
+    }
+
+    @Override
+    public String getText() {
+        return "King";
     }
 }
