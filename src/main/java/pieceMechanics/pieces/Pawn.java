@@ -44,14 +44,31 @@ public class Pawn extends Piece {
 
     @Override
     public void move(Field target, GameData gameData) {
-        super.move(target, gameData);
-        if(this.getField().getY() - target.getY() == -2 || this.getField().getY() - target.getY() == 2){
-            this.savedGameCounter = gameData.getCounter();
+        if(selectionCriteria(target, gameData) && myTurn(gameData)) {
+            if (gameData.kingIsSafe(this, target)) {
+
+                gameData.killIfEnemy(target);
+
+                Field startField = this.getField();
+                this.setField(target);
+
+                if(this.getField().getY() - target.getY() == -2 || this.getField().getY() - target.getY() == 2){
+                    this.savedGameCounter = gameData.getCounter();
+                }
+
+                if (target.getY() == 0 || target.getY() == 7) {
+                    this.promotionService.promote(this, target, gameData);
+                }
+
+                gameData.arrangePieceArray(this, startField);
+                gameData.setCounter(gameData.getCounter() + 1);
+            }
         }
+        this.setSelected(false);
 
+        if(gameData.checkMateOrStaleMate()) {
+            System.out.println("GAME OVER");
 
-        if (target.getY() == 0 || target.getY() == 7) {
-            this.promotionService.promote(this, target, gameData);
         }
     }
 
